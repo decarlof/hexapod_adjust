@@ -22,7 +22,8 @@ def find_limit(motor_pvname, direction):
     start_pos = pv_dval.get()
     step = 0.5
     tolerance = 0.001
-    wait_time = 0.3
+    wait_time = 0.6
+    
 
     if direction == 'up':
         end_pos = pv_hl.get()
