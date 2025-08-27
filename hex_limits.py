@@ -3,6 +3,18 @@ import re
 from time import sleep
 from epics import PV
 
+
+
+def epics_pvs(motor_pvname):
+
+    pv_desc = PV(motor_pvname + ".DESC")
+    pv_dval = PV(motor_pvname + ".DVAL")
+    pv_rbv  = PV(motor_pvname + ".DRBV")
+    pv_hl   = PV(motor_pvname + ".DHLM")
+    pv_ll   = PV(motor_pvname + ".DLLM")
+
+    return pv_desc, pv_dval, pv_rbv, pv_hl, pv_ll
+
 def find_limit(motor_pvname, direction):
 
     pv_desc, pv_dval, pv_rbv, pv_hl, pv_ll = epics_pvs(motor_pvname)
@@ -46,8 +58,8 @@ def find_limit(motor_pvname, direction):
 
 def main():
 
-    # m1_hign_limit = find_limit('2bmHXP:m1', 'up')
-    m1_low_limit  = find_limit('2bmHXP:m1', 'down')
+    # m1_hign_limit = find_limit('2bmHXP:m3', 'up')
+    m1_low_limit  = find_limit('2bmHXP:m3', 'down')
 
 if __name__ == '__main__':
     main()
